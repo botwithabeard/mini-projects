@@ -56,7 +56,7 @@ class Drunk(object):
         return self.name
 
     def __str__(self):
-        if self != None:
+        if self is not None:
             return self.name
         return 'Anonymous'
 
