@@ -86,7 +86,7 @@ def printPath(path):
     result = ''
     for i in range(len(path)):
         result = result + str(path[i])
-        if i != len(path) - 1:
+        if i is not len(path) - 1:
             result = result + '->'
     return result
 
@@ -101,10 +101,10 @@ def DFS(graph, start, end, path, shortest, toPrint = False):
         return path
     for node in graph.childrenOf(start):
         if node not in path:
-            if shortest == None or len(path) < len(shortest):
+            if shortest is None or len(path) < len(shortest):
                 newPath = DFS(graph, node, end, path, shortest,
                               toPrint)
-                if newPath != None:
+                if newPath is not None:
                     shortest = newPath
         elif toPrint:
             print('Already visited', node)
@@ -119,7 +119,7 @@ def testSP(source, destination):
     g = buildCityGraph(Digraph)
     sp = shortestPath(g, g.getNode(source), g.getNode(destination),
                       toPrint = True)
-    if sp != None:
+    if sp is not None:
         print('Shortest path from', source, 'to',
               destination, 'is', printPath(sp))
     else:
